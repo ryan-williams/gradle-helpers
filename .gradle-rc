@@ -1,0 +1,40 @@
+
+defn gw ./gradlew --console=verbose
+defn gwd ./gradlew -d
+defn gwp gw -p
+defn gwc gw compileJava
+defn gwct gw compileTestJava
+defn gwtc gw compileTestJava
+defn gwjc gw compileJava
+defn gwcj gw compileJava
+defn gwjct gw compileTestJava
+defn gwjtc gw compileTestJava
+defn gwctj gw compileTestJava
+defn gws gw spotlessApply
+defn gwsc gw spotlessApply checkstyleMain checkstyleTest
+defn gwcs gw checkstyleMain checkstyleTest
+defn gwtcsc gw spotlessApply compileTestJava checkstyleMain checkstyleTest
+defn gwfb gw findbugsMain
+defn gwsctc gwtcsc
+defn gwppc gwtcsc  # "pre"-pre-commit
+defn gwpc gw javaPreCommit
+defn gwjppc gw :beam-model-pipeline:build :beam-model-job-management:build :beam-model-fn-execution:build :beam-runners-google-cloud-dataflow-java-legacy-worker:build :beam-sdks-java-core:buildNeeded :beam-sdks-java-core:buildDependents
+defn gwpy gwp sdks/python
+defn gwpyc gwp sdks/python/container docker
+defn gwpl gwp sdks/python lint
+defn gwpt gwp sdks/python test
+defn gwptl gwp sdks/python test lint
+defn gwpwcb gwp sdks/python portableWordCountBatch
+defn gwpwcs gwp sdks/python portableWordCountStreaming
+defn gwpwc gw :beam-sdks-python:portableWordCount -PjobEndpoint=localhost:8099
+
+defn gwpf gwp runners/flink/job-server
+defn gwpfjsc gwp runners/flink/job-server-container docker
+defn gwpfrs gwp runners/flink/job-server runShadow
+defn gwpfv gwp runners/flink/job-server validatesPortableRunnerBatch
+defn gwpfvs gwp runners/flink/job-server validatesPortableRunnerStreaming
+
+defn gwfrs gwpfrs
+defn gwfv gwpfv
+defn gwfvs gwpfvs
+
